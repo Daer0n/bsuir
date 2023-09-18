@@ -1,0 +1,37 @@
+DROP TABLE IF EXISTS ПоставщикиS;
+DROP TABLE IF EXISTS ДеталиP;
+DROP TABLE IF EXISTS ПроектыJ;
+DROP TABLE IF EXISTS КоличествоДеталей;
+
+CREATE TABLE ПоставщикиS
+(
+    П VARCHAR(10) PRIMARY KEY NOT NULL,
+    ИмяП VARCHAR(20) NOT NULL,
+    Статус TINYINT UNSIGNED NOT NULL, 
+    Город VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE ДеталиP
+(
+    Д VARCHAR(10) PRIMARY KEY NOT NULL,
+    ИмяД VARCHAR(20) NOT NULL,
+    Цвет VARCHAR(20) NOT NULL,
+    Размер TINYINT UNSIGNED NOT NULL,
+    Город VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE ПроектыJ
+(
+    ПР VARCHAR(10) PRIMARY KEY NOT NULL,
+    ИмяПР VARCHAR(10) NOT NULL,
+    Город VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE КоличествоДеталей
+(
+    П VARCHAR(10) NOT NULL,
+    Д VARCHAR(10) NOT NULL,
+    ПР VARCHAR(10) NOT NULL,
+    S INT UNSIGNED NOT NULL,
+    PRIMARY KEY (П, Д, ПР)
+);
