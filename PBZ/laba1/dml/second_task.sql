@@ -84,7 +84,7 @@ WHERE ПР NOT IN (SELECT * FROM projest_with_details);
 -- 34 
 /*Получить номера деталей, поставляемых либо лондонским поставщиком, 
 либо для лондонского проекта*/
-SELECT d_count.Д 
+SELECT DISTINCT d_count.Д 
 FROM КоличествоДеталей AS d_count
 INNER JOIN ПоставщикиS AS s ON s.П = d_count.П
 INNER JOIN ПроектыJ AS pr ON pr.ПР = d_count.ПР
