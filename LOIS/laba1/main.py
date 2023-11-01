@@ -9,40 +9,81 @@
 
 
 from src import operations
-from src.data_loader import load_from_file
+from src.data_loader import load_from_file, get_facts_dict
+from src.data_validators import Fact
 from src.utils import print_table
 
+import os
 
-def main():
-    facts, functions = load_from_file("data")
 
-    function_tables, function_tables_titles = {}, []
-    for function_head, function_obj in functions.items():
-        function_tables_titles.append(function_obj.head)
-        first_set_name, second_set_name = function_obj.tail_without_variables
-        first_set, second_set = facts[first_set_name], facts[second_set_name]
-        function_tables[function_head] = operations.matrix_impl(first_set.tail, second_set.tail)
+def main(dir: str):
 
-    for table_title, table_tail in zip(function_tables_titles, function_tables.values()):
-        print_table(table_title, table_tail)
 
-    result = []
+    for i, filename in enumerate(sorted(os.listdir(dir))):
 
-    for table_title, function_table in zip(function_tables_titles, function_tables.values()):
-        for fact in facts.values():
-            try:
-                tmp = operations.built_impl_table(fact.tail, function_table)
-                print_table(f"{table_title}/~\{fact.head}", tmp)
-                result.append(operations.compress(tmp))
-            except ValueError:
-                ...
-    
-    result_str = [", ".join(f"({pair[0]}, {pair[1]})" for pair in conclusion_set.items()) for conclusion_set in result]
-    print("Ответ: {", "}, {".join(result_str), "}.", sep ="")
+        print(f"{'-' * 10}{i + 1}{'-' * 10}")
+        
+        file = os.path.join(dir, filename)
+        if not os.path.isfile(file):
+            print(f"Skip {file} (isn't a file)")
+            continue
+        
+        print("Input:")
+        with open(file, "r") as f:
+            print(f.read())
+        print()
+
+        print("Solution:")
+        facts, functions = load_from_file(file)
+
+        function_tables, function_tables_titles = {}, []
+        for function_head, function_obj in functions.items():
+            function_tables_titles.append(function_obj.head)
+            first_set_name, second_set_name = function_obj.tail_without_variables
+            first_set, second_set = facts[first_set_name], facts[second_set_name]
+            function_tables[function_head] = operations.matrix_impl(first_set.tail, second_set.tail)
+
+        for table_title, table_tail in zip(function_tables_titles, function_tables.values()):
+            print_table(table_title, table_tail)
+
+        while True:
+            result_sets = []
+
+            for table_title, function_table in zip(function_tables_titles, function_tables.values()):
+                for fact in facts.values():
+                    try:
+                        
+                        result_impl_table = operations.built_impl_table(fact.tail, function_table)
+
+                        result_set_head = f"{table_title}/~\{fact.head}"
+                        result_set_tail = operations.compress(result_impl_table)
+
+                        print_table(result_set_head, result_impl_table)
+
+                        result_sets.append("{" + ", ".join(f"({pair[0]}, {pair[1]})" for pair in result_set_tail.items()) + "}")
+                        
+                        
+                    except ValueError:
+                        ...
+            print("Answear: ")
+            facts = []
+            if not len(result_sets):
+                print("The are no available pars")
+                return 0
+            for i, tail in enumerate(result_sets):
+                name = f"{chr(97 + i)}(x)"
+                print(f"{name} = {tail}")
+                facts.append(f"{name}={tail.replace(' ', '')}")
+
+            print("\nDo you want to continue? y/n")
+            if input() == 'y':
+                facts = get_facts_dict([Fact(fact) for fact in facts])
+            else: 
+                return 0
+
 
 
 if __name__ == "__main__":
-    main()
+    main("data")
 
-# Вывод всех возможных формул
-# Отчет (проверить нормализованный и ненормализованный ввод (пары до и после импликации))
+# Отчет (проверить нормализованные и субнормализованные множества (пары до и после импликации))
