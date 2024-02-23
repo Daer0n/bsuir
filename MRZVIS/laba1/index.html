@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Pipelining</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="pipelining.js"></script>
+  </head>
+  <body>
+    <div class="data_inputs">
+      <label for="input_bits">Number of bits</label><input type="text" class="input_field" id="input_bits" value="8"><br>
+      <label for="input_pairs_count">Number of pairs</label><input type="text" class="input_field" id="input_pairs_count"><br>
+    </div>
+
+    <div class="numbers_form" id="first_numbers">
+      <div class="form_label hidden">First numbers</div>
+    </div>
+    <div class="numbers_form" id="second_numbers">
+      <div class="form_label hidden">Second numbers</div>
+    </div>
+    <br>
+    <button id="submit" class="submit_button">Calculate</button>
+
+    <div class="table_form">
+      <table id="data_table" class='data_table'>
+      </table>
+    </div>
+
+    <div class="result_list">
+    </div>
+  </body>
+</html>
