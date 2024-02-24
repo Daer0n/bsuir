@@ -28,17 +28,17 @@ def generate_word_form(word: Word):
     morph = pymorphy2.MorphAnalyzer()
     parse = morph.parse(word.base)[0]
     tags = {
-        "муж": "masc",
-        "жен": "femn", 
-        "сред": "neut", 
-        "им": "nomn", 
-        "род": "gent",
-        "дат": "datv",
-        "вин": "accs",
-        "твор": "ablt", 
-        "пр": "loct",
-        "ед": "sing", 
-        "мн": "plur"
+        "мужской": "masc",
+        "женский": "femn", 
+        "средний": "neut", 
+        "именительный": "nomn", 
+        "родительный": "gent",
+        "дательный": "datv",
+        "винительный": "accs",
+        "творительный": "ablt", 
+        "предложный": "loct",
+        "единсвтенное": "sing", 
+        "множественное": "plur"
     }
     gram_info = {tags[v] for v in {word.gender, word.case, word.number}}
     return parse.inflect(gram_info).word
@@ -63,17 +63,17 @@ def get_lexems_to_text(lexems):
         "CONJ": "союз",
         "PRCL": "частица",
         "INTJ": "междометие",
-        "nomn": "им.п.",
-        "gent": "род.п.",
-        "datv": "дат.п.",
-        "accs": "вин.п.",
-        "ablt": "твор.п.",
-        "loct": "пред.п.",
-        "sing": "ед.ч.",
-        "plur": "мн.ч",
-        "masc": "муж.р.",
-        "femn": "жен.р.",
-        "neut": "ср.р"
+        "nomn": "именительный",
+        "gent": "родительный",
+        "datv": "дательный",
+        "accs": "винительный",
+        "ablt": "творительный",
+        "loct": "предложный",
+        "sing": "единственное",
+        "plur": "множественное",
+        "masc": "мужской",
+        "femn": "женский",
+        "neut": "средний"
     }
     
     for item in lexems:

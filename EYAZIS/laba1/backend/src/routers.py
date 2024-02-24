@@ -61,12 +61,32 @@ async def base_search(base: str):
                 data.append(lexeme)
     return data
 
-@router.post('/part/of/speech/search')
-async def part_of_speech_search(base: str):
+@router.post('/part_of_speech/filter')
+async def part_of_speech_filter(part_of_speech: str):
     with open('data/data.json') as json_file:
         data = []
         for line in json_file:
             lexeme = json.loads(line)
-            if lexeme['ч.речи'] == base:
+            if lexeme['ч.речи'] == part_of_speech:
+                data.append(lexeme)
+    return data
+
+@router.post('/gender/filter')
+async def gender_filter(gender: str):
+    with open('data/data.json') as json_file:
+        data = []
+        for line in json_file:
+            lexeme = json.loads(line)
+            if 'род' in lexeme and lexeme['род'] == gender:
+                data.append(lexeme)
+    return data
+
+@router.post('/case/filter')
+async def case_filter(case: str):
+    with open('data/data.json') as json_file:
+        data = []
+        for line in json_file:
+            lexeme = json.loads(line)
+            if 'падеж' in lexeme and lexeme['падеж'] == case:
                 data.append(lexeme)
     return data
