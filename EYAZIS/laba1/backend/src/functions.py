@@ -37,7 +37,7 @@ def generate_word_form(word: Word):
         "винительный": "accs",
         "творительный": "ablt", 
         "предложный": "loct",
-        "единсвтенное": "sing", 
+        "единственное": "sing", 
         "множественное": "plur"
     }
     gram_info = {tags[v] for v in {word.gender, word.case, word.number}}

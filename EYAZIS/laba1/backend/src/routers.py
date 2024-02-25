@@ -51,7 +51,7 @@ async def sentence_parsing(file: UploadFile):
     except Exception as e:
         raise HTTPException(status_code=status.HTTP_422_UNPROCESSABLE_ENTITY, detail="Unprocessable entity")
     
-@router.post('/base/search')
+@router.get('/base/search/{base}')
 async def base_search(base: str):
     with open('data/data.json') as json_file:
         data = []
@@ -61,7 +61,7 @@ async def base_search(base: str):
                 data.append(lexeme)
     return data
 
-@router.post('/part_of_speech/filter')
+@router.get('/part_of_speech/filter/{part_of_speech}')
 async def part_of_speech_filter(part_of_speech: str):
     with open('data/data.json') as json_file:
         data = []
@@ -71,7 +71,7 @@ async def part_of_speech_filter(part_of_speech: str):
                 data.append(lexeme)
     return data
 
-@router.post('/gender/filter')
+@router.get('/gender/filter/gender/{gender}')
 async def gender_filter(gender: str):
     with open('data/data.json') as json_file:
         data = []
@@ -81,7 +81,7 @@ async def gender_filter(gender: str):
                 data.append(lexeme)
     return data
 
-@router.post('/case/filter')
+@router.get('/case/filter/case/{case}')
 async def case_filter(case: str):
     with open('data/data.json') as json_file:
         data = []
@@ -90,3 +90,9 @@ async def case_filter(case: str):
             if 'падеж' in lexeme and lexeme['падеж'] == case:
                 data.append(lexeme)
     return data
+
+@router.get("/view/data")
+async def view_data():
+    with open('data/data.json', 'r') as json_file:
+        file_content = json_file.read()
+        return file_content
