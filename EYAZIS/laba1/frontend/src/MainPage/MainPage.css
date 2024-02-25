@@ -12,10 +12,12 @@ button {
     position: absolute;
     top: 0;
     left: 0;
+    max-width: 60%;
 }
 
 .buttons-left button {
     margin-right: 10px;
+    width: 200px;
 }
 
 .button-right {

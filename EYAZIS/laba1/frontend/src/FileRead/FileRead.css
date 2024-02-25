@@ -1,0 +1,26 @@
+.file-read-page {
+    font-family: Arial, sans-serif;
+    margin-left: 40px;
+    position: relative;
+    padding-top: 30px;
+}
+
+.close-button {
+    position: absolute;
+    top: 0px;
+    right: 10px;
+    font-size: 20px;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.area-field {
+    width: 90%;
+    height: 200px;
+}
+
+.data {
+    width: 100%;
+    height: 100%;
+}

@@ -9,11 +9,36 @@ const MainPage = () => {
         <div>
             <div className="nav-bar">
                 <div className="buttons-left">
-                    <button onClick={() => {navigate('/generate/word')}}>Сгенерировать слово</button>
-                    <button>Чтение с файла</button>
+                    <button
+                        onClick={() => {
+                            navigate("/generate/word");
+                        }}
+                    >
+                        Сгенерировать слово
+                    </button>
+                    <button
+                        onClick={() => {
+                            navigate("/file");
+                        }}
+                    >
+                        Чтение с файла
+                    </button>
+                    <button
+                        onClick={() => {
+                            navigate("/view/data");
+                        }}
+                    >
+                        Просмотр данных
+                    </button>
                 </div>
                 <div className="button-right">
-                    <button onClick={() => {navigate('/help')}}>Помощь</button>
+                    <button
+                        onClick={() => {
+                            navigate("/help");
+                        }}
+                    >
+                        Помощь
+                    </button>
                 </div>
             </div>
         </div>
