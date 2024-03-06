@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import "./App.css";
 import Point from "../drawingData";
 
@@ -39,14 +39,13 @@ function App() {
         };
 
         setSegmentEnds((prevSegmentEnds) => [...prevSegmentEnds, point]);
-        if (segmentEnds.length >= 2) drawCurve();
+        drawCurve();
     };
 
-    const drawCurve = () => {
+    const hermiteAlgorithm = () => {
         const svg = svgRef.current;
-
-        if (svg && selectedAlgorithm === "hermite") {
-            console.log("hermite");
+        console.log("hermite");
+        if (svg) {
             for (let i = 0; i < segmentEnds.length - 1; i++) {
                 const p0 = segmentEnds[i];
                 const p1 = segmentEnds[i + 1];
@@ -82,7 +81,12 @@ function App() {
                 path.setAttribute("fill", "none");
                 svg.appendChild(path);
             }
-        } else if (svg && selectedAlgorithm === "bezier") {
+        }
+    };
+
+    const bezierAlgorithm = () => {
+        const svg = svgRef.current;
+        if (svg) {
             console.log("bezier");
             if (segmentEnds.length >= 4 && (segmentEnds.length - 1) % 3 === 0) {
                 for (let i = 0; i < segmentEnds.length - 1; i += 3) {
@@ -124,7 +128,12 @@ function App() {
                     svg.appendChild(path);
                 }
             }
-        } else if (svg && selectedAlgorithm === "spline") {
+        }
+    };
+
+    const bSplineAlgorithm = () => {
+        const svg = svgRef.current;
+        if (svg) {
             console.log("spline");
             const splinePoints = [];
 
@@ -165,6 +174,25 @@ function App() {
             path.setAttribute("stroke", "blue");
             path.setAttribute("fill", "none");
             svg.appendChild(path);
+        }
+    };
+
+    const drawCurve = () => {
+        const svg = svgRef.current;
+
+        switch (selectedAlgorithm) {
+            case "hermite":
+                hermiteAlgorithm();
+                break;
+            case "bezier":
+                bezierAlgorithm();
+                break;
+            case "spline":
+                bSplineAlgorithm();
+                break;
+            default:
+                alert("You didn't choose algorithm");
+                break;
         }
     };
 
