@@ -22,6 +22,7 @@ function App() {
         if (svg) {
             svg.innerHTML = "";
         }
+    
     };
 
     const createSegment = (
@@ -37,14 +38,14 @@ function App() {
             y: Math.floor(pt.y / cellSize),
             c: { r: 102, g: 0, b: 51 },
         };
-
         setSegmentEnds((prevSegmentEnds) => [...prevSegmentEnds, point]);
-        drawCurve();
+        if (segmentEnds.length >= 2) drawCurve();
     };
 
     const hermiteAlgorithm = () => {
         const svg = svgRef.current;
         console.log("hermite");
+        clearSvg();
         if (svg) {
             for (let i = 0; i < segmentEnds.length - 1; i++) {
                 const p0 = segmentEnds[i];
@@ -86,9 +87,10 @@ function App() {
 
     const bezierAlgorithm = () => {
         const svg = svgRef.current;
+        console.log("bezier");
         if (svg) {
-            console.log("bezier");
             if (segmentEnds.length >= 4 && (segmentEnds.length - 1) % 3 === 0) {
+                clearSvg();
                 for (let i = 0; i < segmentEnds.length - 1; i += 3) {
                     const p0 = segmentEnds[i];
                     const p1 = segmentEnds[i + 1];
@@ -133,8 +135,9 @@ function App() {
 
     const bSplineAlgorithm = () => {
         const svg = svgRef.current;
+        console.log("spline");
+        clearSvg();
         if (svg) {
-            console.log("spline");
             const splinePoints = [];
 
             for (let i = 0; i < segmentEnds.length - 1; i++) {
