@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import "./App.css";
 
 function App() {
-    const [points, setPoints] = useState<{ x: number; y: number }[]>([]);
+    const points: Array<{ x: number; y: number }> = [];
     const svgRef = useRef<SVGSVGElement | null>(null);
 
     const handleAlgorithmChange = (
@@ -29,6 +29,7 @@ function App() {
         const svg = svgRef.current;
         if (svg) {
             svg.innerHTML = "";
+            points.length = 0;
         }
     };
 
@@ -37,7 +38,7 @@ function App() {
         const x = event.clientX - rect.left;
         const y = event.clientY - rect.top;
         const newPoints = [...points, { x, y }];
-        setPoints(newPoints);
+        points.push({ x, y });
         drawPoint(x, y);
         drawPolygon();
     };
