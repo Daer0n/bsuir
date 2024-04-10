@@ -5,59 +5,54 @@
     text-align: center;
 }
 
-.wrapper {
+.Wrapper {
     height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.mainArea {
+.MainArea {
     margin-top: 40px;
 }
 
-.svg {
+.Canvas {
     width: 700px;
     height: 500px;
     border: 3px dashed #313352;
     background-color: #6e6696;
 }
 
-.menu {
+.Menu {
     padding: 10px;
     margin-top: 50px;
-    display: flex;
-    flex-direction: column;
     border: 1px solid #fff;
     border-radius: 10px;
 }
 
-.input {
+.Input {
     width: 100%;
     display: flex;
     padding-bottom: 10px;
 }
 
-.buttons {
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    margin-top: 30px;
-}
-
-.buttons button {
+button {
     width: 200px;
     height: 50px;
     color: white;
     font-size: 18px;
     border-radius: 10px;
+    margin-top: 10px;
 }
 
-.reset {
+.Buttons button {
+    background-color: #af5b7f;
+}
+
+.Reset {
     background-color: #e31764;
 }
 
-.drag {
-    background-color: #af5b7f;
-    margin-right: 30px;
+.Cube {
+    margin-right: 10px;
 }
