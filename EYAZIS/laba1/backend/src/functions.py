@@ -3,6 +3,9 @@ import pymorphy2
 
 from schemas import Word
 
+nltk.download('punkt')
+
+
 def get_lexemes(text):
     words = nltk.word_tokenize(text.lower(), language='russian')
     morph = pymorphy2.MorphAnalyzer()
@@ -75,18 +78,18 @@ def get_lexems_to_text(lexems):
         "femn": "женский",
         "neut": "средний"
     }
-    
+
     for item in lexems:
         lexem = {
             'Основа': item['base'],
-            'ч.речи': tags[item['pos']]
+            'ч.речи': tags.get(item['pos'])
         }
         if item['gender'] is not None:
-            lexem['род'] = tags[item['gender']]   
+            lexem['род'] = tags.get(item['gender'])
         if item['number'] is not None:
-            lexem['число'] = tags[item['number']]
+            lexem['число'] = tags.get(item['number'])
         if item['case'] is not None:
-            lexem['падеж'] = tags[item['case']]
+            lexem['падеж'] = tags.get(item['case'])
         result.append(lexem)
-    
+
     return result

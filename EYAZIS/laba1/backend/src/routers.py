@@ -32,7 +32,7 @@ async def sentence_parsing(file: UploadFile):
     
 
 @router.post('/save')
-async def sentence_parsing(file: UploadFile):
+async def save(file: UploadFile):
     try:
         file_content = await file.read()
         file_object = io.BytesIO(file_content)
