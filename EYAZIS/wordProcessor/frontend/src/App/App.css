@@ -1,0 +1,15 @@
+.app {
+  background-color: purple;
+  overflow: hidden;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-field {
+  width: 65%;
+  height: 70%;
+  background-color: plum;
+  border-radius: 20px;
+}
