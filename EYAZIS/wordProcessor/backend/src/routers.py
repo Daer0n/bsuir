@@ -4,8 +4,8 @@ from docx import Document
 from fastapi import APIRouter, UploadFile
 from fastapi import HTTPException, status
 
-from schemas import Word
-from functions import generate_word_form, get_lexemes, get_lexems_to_text, main_corpus
+from schemas import Word, Context
+from functions import generate_word_form, get_lexemes, get_lexems_to_text, main_corpus, find_context
 
 router = APIRouter(
     prefix="/word",
@@ -100,3 +100,7 @@ async def view_data():
 @router.get("/corpus/search/{sentence}")
 async def search_corpus(sentence: str):
     return main_corpus(sentence)
+
+@router.post("/search/context")
+async def search_context(context: Context):
+    return find_context(context.word, context.length, context.count)

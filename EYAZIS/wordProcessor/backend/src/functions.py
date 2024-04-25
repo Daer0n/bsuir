@@ -1,12 +1,13 @@
 import nltk
-from nltk.corpus import stopwords
+from nltk.text import Text
+from nltk.corpus import stopwords, movie_reviews
 import pymorphy2
 
 from schemas import Word
 from typing import Dict, List, Union
-import string
 import os
 import json
+import codecs
 from utils.prepare_corpus import prepare
 
 nltk.download('punkt')
@@ -135,3 +136,14 @@ def main_corpus(text: str) -> Dict[str, Dict[str, Union[str, int]]]:
             parsed_text.append(i)
     words_dict = find_words(parsed_text)
     return words_dict
+
+def find_context(word: str, length: int, count: int) -> str:
+    words = []
+    with codecs.open(movie_reviews.abspath(movie_reviews.fileids()[0]), encoding='utf-8') as file:
+        for line in file:
+            words.extend(line.split())
+
+    text = Text(words)
+    con_list = text.concordance_list(word, width=length, lines=count)
+    return "\n".join([f"{i + 1}. {j.line}" for i, j in enumerate(con_list)])
+

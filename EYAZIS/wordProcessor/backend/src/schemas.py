@@ -5,3 +5,8 @@ class Word(BaseModel):
     gender: str
     case: str
     number: str
+
+class Context(BaseModel):
+    word: str
+    length: int
+    count: int

@@ -8,6 +8,7 @@ import WordGenerate from "../WordGenerate/WordGenerate";
 import FileRead from "../FileRead/FileRead";
 import ViewData from "../ViewData/ViewData";
 import ParseText from "../ParseText/ParseText";
+import GetContext from "../GetContext/GetContext";
 
 function App() {
     return (
@@ -17,10 +18,14 @@ function App() {
                     <Routes>
                         <Route path="/" element={<MainPage />} />
                         <Route path="/help" element={<HelpPage />} />
-                        <Route path="/generate/word" element={<WordGenerate />} />
+                        <Route
+                            path="/generate/word"
+                            element={<WordGenerate />}
+                        />
                         <Route path="/file" element={<FileRead />} />
                         <Route path="/view/data" element={<ViewData />} />
                         <Route path="/parse/text" element={<ParseText />} />
+                        <Route path="/get/context" element={<GetContext />} />
                     </Routes>
                 </BrowserRouter>
             </div>

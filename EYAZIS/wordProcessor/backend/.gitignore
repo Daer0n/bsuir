@@ -20,11 +20,13 @@ site_build
 venv
 docs.zip
 archive.zip
+src/data/movie_reviews_converted
 
 # vim temporary files
 *~
 .*.sw?
 .cache
+
 
 # macOS
 .DS_Store

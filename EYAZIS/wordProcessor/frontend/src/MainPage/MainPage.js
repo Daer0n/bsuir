@@ -37,6 +37,13 @@ const MainPage = () => {
                     >
                         Разобрать текст
                     </button>
+                    <button
+                        onClick={() => {
+                            navigate("/get/context");
+                        }}
+                    >
+                        Контекст
+                    </button>
                 </div>
                 <div className="button-right">
                     <button

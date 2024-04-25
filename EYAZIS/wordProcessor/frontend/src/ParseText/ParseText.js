@@ -16,7 +16,6 @@ const ParseText = () => {
     const handleParseText = async () => {
         try {
             const response = await api.get(`word/corpus/search/${sentence}`);
-            console.log(response.data);
             const data = response.data;
             const words = Object.keys(data).map((word) => ({
                 word: word,
