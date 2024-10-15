@@ -1,0 +1,200 @@
+; 1)Объявление переменных
+;   Явное
+; 2)Преобразование типов
+;    Не явное
+; 3)Оператор присваивания
+;   Многоцелевой, например, a, b = c, d
+; 4)Структуры, ограничивающие область видимости
+;   Подпрограммы и блочные операторы
+; 5)Маркер блочного оператора
+;   Явные, например, { } или begin end
+; 6)Условные операторы
+;   Двух вариантный оператор и многовариантный switch-case
+; 7)Перегрузка подпрограмм
+;   Присутствует
+; 8)Передача параметров в подпрограмму
+;   По ссылке
+; 9)Допустимое место объявления подпрограмм:
+;   В любом месте программы, также и внутри другой подпрограммы.
+
+; Язык для работы со списковыми структурами
+; Встроенные типы: element, list
+; Операции: переопределить +, -, *, \ и т.д. для встроенных типов
+; Списковые структуры: дерево, очередь
+; Встроенные функции балансировки, слияния
+
+; Исполняемый файл (.exe), для генерации целевого кода использовать LLVM (http://llvm.org) 
+
+// Объявление переменных
+element a = 5;
+list b = [1, 2, 3];
+
+// Преобразование типов (неявное)
+a = b[0]; 
+
+// Оператор присваивания (многоцелевой)
+a, b = c, d;
+
+// Структуры, ограничивающие область видимости
+subprogram exampleSubprogram() {
+    // блочный оператор начала
+    {
+        element x = 10;
+        // код
+    }
+} // блочный оператор конца
+
+// Условные операторы
+if (condition) {
+    // код
+} else {
+    // код
+}
+
+switch (expression) {
+    case value1:
+        // код
+        break;
+    case value2:
+        // код
+        break;
+    default:
+        // код
+}
+
+// Перегрузка подпрограмм
+subprogram exampleSubprogram(element a) {
+    // код
+}
+
+subprogram exampleSubprogram(list a) {
+    // код
+}
+
+// Передача параметров в подпрограмму по ссылке
+subprogram passByReference(element &a) {
+    a = a + 1;
+}
+
+// Допустимое место объявления подпрограмм
+subprogram main() {
+    // код
+}
+
+subprogram nestedSubprogram() {
+    // код
+}
+
+// Встроенные функции балансировки и слияния
+subprogram balance(list a) {
+    // код
+}
+
+subprogram merge(list a, list b) {
+    // код
+}
+
+// Списковые структуры: дерево, очередь
+structure Tree {
+    // код
+}
+
+structure Queue {
+    // код
+}
+
+// Встроенные типы: element, list
+element c = 10;
+list d = [4, 5, 6];
+
+
+
+// Функция для вычисления суммы элементов в списке
+subprogram calculateSum(list inputList) {
+    element sum = 0;
+    element index = 0;
+    
+    while (index < inputList.length) {
+        sum = sum + inputList[index];
+        index = index + 1;
+    }
+    
+    return sum;
+}
+
+// Функция для поиска элемента в списке
+subprogram searchElement(list inputList, element target) {
+    element index = 0;
+    
+    for element item in inputList {
+        if (item == target) {
+            write("Элемент найден в списке.");
+            return;
+        }
+    }
+    
+    write("Элемент не найден в списке.");
+}
+
+// Пример использования встроенных функций ввода/вывода и работы со встроенными типами
+subprogram main() {
+    list list1 = read(); // Ввод списка с клавиатуры
+    list list2 = read(); // Ввод списка с клавиатуры
+    
+    write("Список 1: ");
+    for element item in list1 {
+        write(item);
+    }
+    
+    write("Список 2: ");
+    for element item in list2 {
+        write(item);
+    }
+    
+    list merged = mergeLists(list1, list2);
+    
+    write("Объединенный список: ");
+    for element item in merged {
+        write(item);
+    }
+    
+    element sum = calculateSum(merged);
+    write("Сумма элементов в объединенном списке: " + sum);
+    
+    element target = read(); // Ввод элемента для поиска
+    searchElement(merged, target);
+}
+
+
+// Перегрузка функции для слияния списка с элементом
+subprogram mergeLists(list list1, element elementToAdd) {
+    list mergedList = [];
+    
+    for element item in list1 {
+        mergedList = mergedList + [item];
+    }
+    
+    mergedList = mergedList + [elementToAdd];
+    
+    return mergedList;
+}
+
+// Пример использования перегрузки функции mergeLists
+subprogram main() {
+    list list1 = [1, 2, 3];
+    element newElement = 4;
+    
+    list result1 = mergeLists(list1, newElement);
+    write("Список после добавления элемента: ");
+    for element item in result1 {
+        write(item);
+    }
+    
+    list list2 = [5, 6, 7];
+    
+    list result2 = mergeLists(list1, list2);
+    write("Слияние двух списков: ");
+    for element item in result2 {
+        write(item);
+    }
+}
