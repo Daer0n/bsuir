@@ -1,0 +1,71 @@
+lexer grammar XMLLangLexer;
+
+tokens {
+    
+}
+
+INDENT : '{';
+DEDENT : '}';
+
+STRING: '"' ( STRING_ESCAPE_SEQ | ~[\\\r\n\f"])* '"';
+
+NUMBER: DECIMAL_INTEGER;
+
+ELEMENT    : 'element';
+LIST       : 'list';
+SUBPROGRAM : 'subprogram';
+STRUCTURE  : 'structure';
+IF         : 'if';
+ELSE       : 'else';
+SWITCH     : 'switch';
+CASE       : 'case';
+BREAK      : 'break';
+DEFAULT    : 'default';
+WHILE      : 'while';
+FOR        : 'for';
+IN         : 'in';
+RETURN     : 'return';
+
+WS: [ \t\n\r\f]+ -> skip ;
+
+NEWLINE: SPACES | ( '\r'? '\n' | '\r' | '\f') SPACES?;
+
+ID: [a-zA-Z_][a-zA-Z_0-9]* ;
+
+DECIMAL_INTEGER: NON_ZERO_DIGIT DIGIT* | '0'+;
+
+DOT                : '.';
+OPEN_PAREN         : '(' {this.openBrace();};
+CLOSE_PAREN        : ')' {this.closeBrace();};
+OPEN_BRACK         : '[' {this.openBrace();};
+CLOSE_BRACK        : ']' {this.closeBrace();};
+COMMA              : ',';
+COLON              : ':';
+SEMI_COLON         : ';';
+ASSIGN             : '=';
+ADD                : '+';
+MINUS              : '-';
+MULTIPLY           : '*';
+DIVIDE             : '/';
+EQUALS             : '==';
+NOT_EQ             : '!=';
+LESS_THAN          : '<';
+GREATER_THAN       : '>';
+LESS_THAN_OR_EQUAL : '<=';
+GREATER_THAN_OR_EQUAL : '>=';
+AND                : '&&';
+OR                 : '||';
+NOT                : '!';
+AMPERSAND          : '&';
+
+UNKNOWN_CHAR: .;
+
+fragment STRING_ESCAPE_SEQ: '\\' . | '\\' NEWLINE;
+
+fragment NON_ZERO_DIGIT: [1-9];
+
+fragment DIGIT: [0-9];
+
+fragment SPACES: [ \t]+;
+
+fragment COMMENT: '#' ~[\r\n\f]*;

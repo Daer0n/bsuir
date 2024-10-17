@@ -1,0 +1,131 @@
+parser grammar XMLLangLexerParser;
+options { tokenVocab=XMLLangLexer; }
+
+program
+    : (subprogramDef | statement)* EOF
+    ;
+
+subprogramDef
+    : SUBPROGRAM ID parameters block
+    ;
+
+parameters
+    : OPEN_PAREN typedargslist? CLOSE_PAREN
+    ;
+
+typedargslist
+    : typedarg (COMMA typedarg)*
+    ;
+
+typedarg
+    : datatype ID
+    ;
+
+datatype
+    : ELEMENT
+    | LIST
+    ;
+
+block
+    : INDENT statement+ DEDENT
+    ;
+
+statement
+    : simple_statement
+    | compound_statement
+    ;
+
+simple_statement
+    : variable_declaration
+    | assignment
+    | flow_statement
+    | expr_statement
+    ;
+
+variable_declaration
+    : datatype ID (ASSIGN expr)?
+    ;
+
+assignment
+    : ID ASSIGN expr
+    ;
+
+expr_statement
+    : expr
+    ;
+
+flow_statement
+    : RETURN expr?
+    | BREAK
+    ;
+
+compound_statement
+    : if_statement
+    | while_statement
+    | for_statement
+    | switch_statement
+    ;
+
+if_statement
+    : IF expr block (ELSE block)?
+    ;
+
+while_statement
+    : WHILE expr block
+    ;
+
+for_statement
+    : FOR datatype? ID IN expr block
+    ;
+
+switch_statement
+    : SWITCH expr INDENT case_block+ (DEFAULT COLON statement+)? DEDENT
+    ;
+
+case_block
+    : CASE expr COLON statement+ BREAK SEMI_COLON
+    ;
+
+expr
+    : term (binary_op term)*
+    ;
+
+term
+    : factor ((MULTIPLY | DIVIDE) factor)*
+    ;
+
+factor
+    : atom
+    | MINUS factor
+    | NOT factor
+    ;
+
+atom
+    : ID
+    | NUMBER
+    | STRING
+    | list_literal
+    | function_call
+    | OPEN_PAREN expr CLOSE_PAREN
+    ;
+
+list_literal
+    : OPEN_BRACK (expr (COMMA expr)*)? CLOSE_BRACK
+    ;
+
+function_call
+    : ID OPEN_PAREN (expr (COMMA expr)*)? CLOSE_PAREN
+    ;
+
+binary_op
+    : ADD
+    | MINUS
+    | EQUALS
+    | NOT_EQ
+    | LESS_THAN
+    | GREATER_THAN
+    | LESS_THAN_OR_EQUAL
+    | GREATER_THAN_OR_EQUAL
+    | AND
+    | OR
+    ;
