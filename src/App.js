@@ -1,25 +1,19 @@
-import logo from './logo.svg';
+import React, { useState } from "react";
+import SpeechSynthesis from "./components/speechSynthesis";
+import SpeechRecognition from "./components/speechRecognition";
 import './App.css';
 
-function App() {
+const App = () => {
+  const [currentPage, setCurrentPage] = useState("pageOne");
+
+  const navigate = (page) => setCurrentPage(page);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {currentPage === "pageOne" && <SpeechSynthesis navigate={navigate} />}
+      {currentPage === "pageTwo" && <SpeechRecognition navigate={navigate} />}
     </div>
   );
-}
+};
 
 export default App;
