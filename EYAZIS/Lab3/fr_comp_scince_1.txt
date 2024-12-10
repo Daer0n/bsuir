@@ -1,0 +1,36 @@
+https://www.zdnet.fr/actualites/pixel-8-pro-plus-d-ia-et-des-performances-ameliorees-grace-a-ai-core-39962680.html
+Pixel 8 Pro : plus d’IA et des performances améliorées grâce à AI Core
+Technologie : Google a annoncé la première mise à jour d’AI Core, qui gère l’IA sur les Pixel. Mais elle concernera uniquement les Pixel 8 Pro.
+C’est Noël avant l’heure pour les propriétaires du Pixel 8 Pro ! Google vient en effet d’annoncer une mise à jour d’AI Core, qui apporte la puissance de l’IA sur son smartphone le plus haut de gamme.
+
+Cette mise à jour permettra notamment d’enrichir les fonctionnalités "smart" de l’appareil photo (gomme magique, anti-flou) et l’assistant Google. Mais les améliorations vont bien au-delà.
+
+
+Un premier pas vers l’IA
+La nouvelle version d’AI Core apportera des fonctionnalités basées sur l’intelligence artificielle tout en fonctionnant en arrière-plan.
+
+L’objectif de Google, à terme, est de déployer des capacités de génération de texte et d’images sur tous les appareils Pixel – et la mise à jour de l’application AI Core est une étape vers cette réalité.
+
+Bien sûr, cette première mise à jour ne permettra pas à votre Pixel de générer des images par l’IA : une puissance de traitement supérieure à celle d’un smartphone est requise pour cette tâche. Cependant, il est (probablement) en mesure d’accéder à l’énorme puissance de traitement du cloud de Google. Ce qui devrait permettre de réaliser cette performance dans le futur.
+AI Core
+Google ne donne beaucoup de détails sur AI Core. La page dédiée à l’application dans le Play Store est elle-même plutôt avare en informations. Voici ce qu’on peut y lire dans la section A propos de cette application :
+
+AI Core alimente les fonctionnalités d’Android et fournit aux applications les derniers modèles d’intelligence artificielle.
+
+Cependant, en regardant plus attentivement les images présentes sur la page, on peut y trouver ces informations :
+
+Les fonctionnalités pilotées par l’IA s’exécutent directement sur votre appareil, à l’aide des derniers modèles de base. Pour que ces fonctionnalités restent intelligentes, votre appareil met automatiquement à jour les modèles d’IA, et AI Core gère ces mises à jour tout en fournissant des fonctionnalités d’IA à d’autres applications.
+
+Cette description nous permet de déduire qu’AI Core est responsable de la mise à jour des modèles de base et de la fourniture de fonctionnalités d’IA aux applications de votre appareil.
+Plus d’IA
+Pour ses nouveaux appareils Pixel, Google a tout misé sur l’IA. D’où l’importance de la mise à jour d’AI Core, qui améliore les performances de fonctionnalités comme la gomme magique, par exemple.
+
+Par ailleurs, toutes les applications utilisant l’IA auront accès aux derniers modèles de fondation, qui sont au nombre de trois :
+
+Imagen contient des modèles de génération et d’édition d’images.
+Codey assiste les développeurs, leur permettant d’être plus productifs et plus créatifs.
+Chirp propose des modèles de reconnaissance vocale dans plus de 100 langues.
+Cette première version d’AI Core permettra aux téléphones Pixel d’accéder aux dernières versions de ces modèles (ainsi qu’à de nouvelles fonctionnalités d’IA).
+
+Si on ne sait pas encore quand AI Core sera disponible, on sait qu’elle sera dans un premier temps uniquement réservée aux Pixel 8 Pro, avant d’être déployée sur les autres appareils Pixel.
+
